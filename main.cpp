@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -9,14 +11,21 @@ int main() {
     // вводим количество точек и в следующих n строках пары координат
     int n;
     int a, b; //координаты
-    cin >> n;
+    string filename_in;
+
+    ifstream fin;
+    cout << "Введите путь к входному файлу:\n";
+    cin >> filename_in;
+    fin.open(filename_in);
+
+    fin >> n;
     float c; // расстояние
     vector<pair<float, pair<int, int>>> A; // создаем вектор пар (расстояние от центра, координаты)
     // координаты – тоже пара
     for (int i = 0; i < n; i++) {
-        cin >> a >> b;
+        fin >> a >> b;
         c = a*a + b*b; // расстояние по l2 норме
-        A.push_back(make_pair(c, make_pair(a, b)));
+        A.emplace_back(make_pair(c, make_pair(a, b)));
     }
     // создаем итераторы – начало и конец
     vector<pair<float, pair <int,int>>>::iterator iA = A.begin();
