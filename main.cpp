@@ -14,7 +14,7 @@ int main() {
     string filename_in;
 
     ifstream fin;
-    cout << "Введите путь к входному файлу:\n";
+    cout << "Enter the input file path:\n";
     cin >> filename_in;
     fin.open(filename_in);
 
@@ -32,7 +32,7 @@ int main() {
     vector<pair<float, pair <int,int>>>::iterator iAend = A.end();
     sort(iA, iAend); // сортируем по расстоянию
     iA = A.begin();
-    cout << "Результат: \n";
+    cout << "Result: \n";
     for (int i = 0; i<n; i++) {
         // берем второй элемент – это координаты, выводим их
         cout << (*iA).second.first << ' ' <<  (*iA).second.second;
